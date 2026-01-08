@@ -8,6 +8,8 @@
 
 Monitor and manage your [Proxy-Cheap](https://proxy-cheap.com) proxies from Home Assistant.
 
+> **Disclaimer**: This is an unofficial third-party integration and is not affiliated with, endorsed by, or supported by Proxy-Cheap.
+
 ## Features
 
 - **Sensors**: Balance, IP, Port, Protocol, Country, Bandwidth (total/used/remaining), Expiry Date
