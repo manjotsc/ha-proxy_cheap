@@ -1,0 +1,70 @@
+refresh:
+  name: Refresh
+  description: Refresh all Proxy-Cheap data from the API
+
+extend_proxy:
+  name: Extend Proxy
+  description: Extend a proxy's rental period
+  fields:
+    entity_id:
+      name: Proxy
+      description: Select the proxy to extend
+      required: true
+      selector:
+        entity:
+          integration: proxy_cheap
+          domain:
+            - sensor
+            - binary_sensor
+    months:
+      name: Months
+      description: Number of months to extend
+      required: true
+      selector:
+        number:
+          min: 1
+          max: 12
+          mode: box
+
+update_whitelist:
+  name: Update Whitelist
+  description: Update the IP whitelist for a proxy
+  fields:
+    entity_id:
+      name: Proxy
+      description: Select the proxy to update
+      required: true
+      selector:
+        entity:
+          integration: proxy_cheap
+          domain:
+            - sensor
+            - binary_sensor
+    ips:
+      name: IP Addresses
+      description: Comma-separated list of IP addresses to whitelist (leave empty to clear)
+      required: false
+      selector:
+        text:
+          multiline: true
+
+set_auto_extend:
+  name: Set Auto Extend
+  description: Enable or disable auto-extend for a proxy
+  fields:
+    entity_id:
+      name: Proxy
+      description: Select the proxy
+      required: true
+      selector:
+        entity:
+          integration: proxy_cheap
+          domain:
+            - sensor
+            - binary_sensor
+    enabled:
+      name: Enabled
+      description: Whether to enable auto-extend
+      required: true
+      selector:
+        boolean:

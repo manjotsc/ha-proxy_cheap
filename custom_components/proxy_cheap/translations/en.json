@@ -1,0 +1,146 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Proxy-Cheap",
+        "description": "Enter your Proxy-Cheap API credentials. You can create API keys in your Proxy-Cheap account dashboard.",
+        "data": {
+          "api_key": "API Key",
+          "api_secret": "API Secret",
+          "scan_interval": "Update interval (seconds)"
+        },
+        "data_description": {
+          "api_key": "Your Proxy-Cheap API key",
+          "api_secret": "Your Proxy-Cheap API secret",
+          "scan_interval": "How often to fetch data from the API (60-3600 seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to Proxy-Cheap API",
+      "invalid_auth": "Invalid API credentials",
+      "unknown": "Unexpected error occurred"
+    },
+    "abort": {
+      "already_configured": "This API key is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Proxy-Cheap Options",
+        "description": "{proxy_ids}",
+        "data": {
+          "enabled_sensors": "Enabled Sensors",
+          "proxy_names": "Proxy Names"
+        },
+        "data_description": {
+          "enabled_sensors": "Select which sensors to enable for each proxy",
+          "proxy_names": "Set custom names for your proxies (one per line: proxy_id=name)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "balance": {
+        "name": "Account Balance"
+      },
+      "proxy_count": {
+        "name": "Total Proxies"
+      },
+      "proxy_status": {
+        "name": "Status"
+      },
+      "proxy_ip": {
+        "name": "IP Address"
+      },
+      "proxy_port": {
+        "name": "Port"
+      },
+      "proxy_username": {
+        "name": "Username"
+      },
+      "proxy_protocol": {
+        "name": "Protocol"
+      },
+      "proxy_network_type": {
+        "name": "Network Type"
+      },
+      "proxy_country": {
+        "name": "Country"
+      },
+      "proxy_bandwidth_total": {
+        "name": "Bandwidth Total"
+      },
+      "proxy_bandwidth_used": {
+        "name": "Bandwidth Used"
+      },
+      "proxy_bandwidth_remaining": {
+        "name": "Bandwidth Remaining"
+      },
+      "proxy_expiry": {
+        "name": "Expiry Date"
+      },
+      "proxy_auto_extend": {
+        "name": "Auto Extend"
+      }
+    },
+    "binary_sensor": {
+      "proxy_active": {
+        "name": "Active"
+      },
+      "proxy_auto_extend_enabled": {
+        "name": "Auto Extend Enabled"
+      }
+    }
+  },
+  "services": {
+    "refresh": {
+      "name": "Refresh",
+      "description": "Refresh all Proxy-Cheap data from the API"
+    },
+    "extend_proxy": {
+      "name": "Extend Proxy",
+      "description": "Extend a proxy's rental period",
+      "fields": {
+        "entity_id": {
+          "name": "Proxy",
+          "description": "Select the proxy to extend"
+        },
+        "months": {
+          "name": "Months",
+          "description": "Number of months to extend"
+        }
+      }
+    },
+    "update_whitelist": {
+      "name": "Update Whitelist",
+      "description": "Update the IP whitelist for a proxy",
+      "fields": {
+        "entity_id": {
+          "name": "Proxy",
+          "description": "Select the proxy to update"
+        },
+        "ips": {
+          "name": "IP Addresses",
+          "description": "Comma-separated list of IP addresses to whitelist"
+        }
+      }
+    },
+    "set_auto_extend": {
+      "name": "Set Auto Extend",
+      "description": "Enable or disable auto-extend for a proxy",
+      "fields": {
+        "entity_id": {
+          "name": "Proxy",
+          "description": "Select the proxy"
+        },
+        "enabled": {
+          "name": "Enabled",
+          "description": "Whether to enable auto-extend"
+        }
+      }
+    }
+  }
+}

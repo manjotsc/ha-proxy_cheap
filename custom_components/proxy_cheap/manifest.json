@@ -1,0 +1,12 @@
+{
+  "domain": "proxy_cheap",
+  "name": "Proxy-Cheap",
+  "codeowners": ["@me"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/me/ha-proxy_cheap",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/me/ha-proxy_cheap/issues",
+  "requirements": ["aiohttp>=3.8.0"],
+  "version": "1.0.0"
+}
