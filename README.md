@@ -1,10 +1,10 @@
 # Proxy-Cheap for Home Assistant
 
-<p align="center">
-  <a href="https://github.com/me/ha-proxy_cheap/releases"><img src="https://img.shields.io/github/v/release/me/ha-proxy_cheap?style=flat-square" alt="Release"></a>
-  <a href="https://github.com/hacs/integration"><img src="https://img.shields.io/badge/HACS-Custom-41BDF5?style=flat-square" alt="HACS"></a>
-  <a href="https://github.com/me/ha-proxy_cheap/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/me/ha-proxy_cheap/validate.yml?style=flat-square&label=validation" alt="Validation"></a>
-</p>
+[![GitHub Release](https://img.shields.io/github/v/release/me/ha-proxy_cheap?style=for-the-badge&logo=github&color=blue)](https://github.com/me/ha-proxy_cheap/releases)
+[![HACS](https://img.shields.io/badge/HACS-Custom-41BDF5?style=for-the-badge&logo=homeassistantcommunitystore)](https://github.com/hacs/integration)
+[![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.1+-18BCF2?style=for-the-badge&logo=homeassistant&logoColor=white)](https://www.home-assistant.io/)
+[![Validation](https://img.shields.io/github/actions/workflow/status/me/ha-proxy_cheap/validate.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=Build)](https://github.com/me/ha-proxy_cheap/actions/workflows/validate.yml)
+[![License](https://img.shields.io/github/license/me/ha-proxy_cheap?style=for-the-badge&color=yellow)](LICENSE)
 
 Monitor and manage your [Proxy-Cheap](https://proxy-cheap.com) proxies from Home Assistant.
 
