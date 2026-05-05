@@ -62,6 +62,7 @@ class ProxyCheapApi:
     def _get_headers(self) -> dict[str, str]:
         """Get the headers for API requests."""
         return {
+            "User-Agent": "ha-proxy-cheap/1.0.1 (Home Assistant)",
             "X-Api-Key": self._api_key,
             "X-Api-Secret": self._api_secret,
             "Content-Type": "application/json",
@@ -85,6 +86,7 @@ class ProxyCheapApi:
                         url,
                         headers=self._get_headers(),
                         params=data,
+                        allow_redirects=False,
                     ) as response:
                         return await self._handle_response(response)
                 else:
@@ -92,6 +94,7 @@ class ProxyCheapApi:
                         url,
                         headers=self._get_headers(),
                         json=data,
+                        allow_redirects=False,
                     ) as response:
                         return await self._handle_response(response)
         except asyncio.TimeoutError as err:
@@ -103,6 +106,15 @@ class ProxyCheapApi:
         self, response: aiohttp.ClientResponse
     ) -> dict[str, Any]:
         """Handle the API response."""
+        # The API redirects unauthenticated requests to a login page; treat
+        # any redirect as an auth failure so it surfaces clearly.
+        if response.status in (301, 302, 303, 307, 308):
+            location = response.headers.get("Location", "")
+            raise ProxyCheapAuthError(
+                "Invalid API credentials (API redirected to "
+                f"{location or 'login page'}). Verify your API Key and "
+                "Secret at https://app.proxy-cheap.com/account/security/api-keys"
+            )
         if response.status == 401:
             raise ProxyCheapAuthError("Invalid API credentials")
         if response.status == 403:
@@ -113,8 +125,10 @@ class ProxyCheapApi:
                 f"API error {response.status}: {text}"
             )
 
+        # The API mislabels JSON responses with Content-Type: text/html, so
+        # bypass aiohttp's content-type check and parse the body directly.
         try:
-            return await response.json()
+            return await response.json(content_type=None)
         except Exception as err:
             text = await response.text()
             _LOGGER.error("Failed to parse response: %s", text)
